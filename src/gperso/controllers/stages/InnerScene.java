@@ -101,7 +101,7 @@ public class InnerScene {
     }
     @Bean
     @Scope("prototype")
-    public PosteController postes (@Value("/stage/scene/oste.fxml") String fxml) throws IOException {
+    public PosteController postes (@Value("/stage/scene/poste.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (PosteController) getInit();
     }
@@ -130,7 +130,7 @@ public class InnerScene {
     }
     @Bean
     @Scope("prototype")
-    public FormationDataController formationData(@Value("/stage/scene/ormation_data.fxml") String fxml)
+    public FormationDataController formationData(@Value("/stage/scene/formation_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (FormationDataController) getInit();

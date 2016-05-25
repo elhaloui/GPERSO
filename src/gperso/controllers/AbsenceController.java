@@ -135,30 +135,30 @@ public class AbsenceController implements FxInitializable {
         tableAbsence.getSelectionModel().clearSelection();
     }
 
-    @Autowired
-    public void setLang(LangSource lang) {
-        this.lang = lang;
-    }
+//    @Autowired
+//    public void setLang(LangSource lang) {
+//        this.lang = lang;
+//    }
 
-    @Autowired
-    public void setActionColumnAbsence(TableViewColumnAction actionColumnAbsence) {
-        this.actionColumnAbsence = actionColumnAbsence;
-    }
+//    @Autowired
+//    public void setActionColumnAbsence(TableViewColumnAction actionColumnAbsence) {
+//        this.actionColumnAbsence = actionColumnAbsence;
+//    }
 
-    @Autowired
-    public void setWindows(DialogWindows windows) {
-        this.windows = windows;
-    }
+//    @Autowired
+//    public void setWindows(DialogWindows windows) {
+//        this.windows = windows;
+//    }
+//
+//    @Autowired
+//    public void setBallon(DialogBalloon ballon) {
+//        this.ballon = ballon;
+//    }
 
-    @Autowired
-    public void setBallon(DialogBalloon ballon) {
-        this.ballon = ballon;
-    }
-
-    @Autowired
-    public void setHomeAction(HomeController homeAction) {
-        this.homeAction = homeAction;
-    }
+//    @Autowired
+//    public void setHomeAction(HomeController homeAction) {
+//        this.homeAction = homeAction;
+//    }
 
     @Autowired
     public void setService(ServiceOfAbsence serviceAbsence) {

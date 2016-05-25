@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  *.
  */
 @Configuration
-@ComponentScan(basePackages = {"gperso.controllers", "gperso.services"})
+@ComponentScan(basePackages = {"gperso","gperso.controllers", "gperso.services"})
 @Import(value = DatabaseConfigurer.class)
 @EnableTransactionManagement
 public class ApplicationConfigurer {
