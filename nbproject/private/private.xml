@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/models/Absence.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/services/ServiceOfPoste.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso_schema.sql</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/actions/masterdata/PersonnelDataAction.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/stage/scene/masterdata/personnel_data.fxml</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/models/Poste.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/utile/Utile.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/models/Personnel.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/gperso/actions/masterdata/PosteAction.java</file>
+            <file>file:/D:/DEV/JavaFx/GPERSO/src/stage/scene/masterdata/poste.fxml</file>
+        </group>
+    </open-files>
+</project-private>

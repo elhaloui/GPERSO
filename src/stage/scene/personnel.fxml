@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="899.0" prefWidth="1287.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gperso.Controllers.PersonnelController">
+    <center>
+        <AnchorPane prefHeight="390.0" prefWidth="788.0" BorderPane.alignment="CENTER">
+            <children>
+            <SplitPane dividerPositions="0.5" layoutX="40.0" layoutY="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                      <TableView fx:id="tableView" prefHeight="320.0" prefWidth="295.0">
+                          <columns>
+                              <TableColumn fx:id="columnCin" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="CIN">
+                            
+                        </TableColumn>
+                              <TableColumn fx:id="columnAction" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Actions">
+                            
+                        </TableColumn>
+                          </columns>
+                          <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                          </columnResizePolicy>
+                          <contextMenu>
+                              <ContextMenu>
+                                  <items>
+                                      <MenuItem mnemonicParsing="false" onAction="#loadData" text="%javafx.action.refresh">
+                                          <accelerator>
+                                              <KeyCodeCombination alt="UP" code="F5" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                          </accelerator>
+                                         
+                                      </MenuItem>
+                                      <MenuItem mnemonicParsing="false" onAction="#tableViewClearSelected" text="%javafx.action.clear.selection">
+                                   
+                                </MenuItem>
+                                  </items>
+                              </ContextMenu>
+                          </contextMenu>
+                      </TableView>
+                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" vbarPolicy="ALWAYS">
+                        <content>
+                        <VBox>
+                           <children>
+                              <Accordion prefHeight="76.0" prefWidth="283.0" VBox.vgrow="ALWAYS">
+                                <panes>
+                                  <TitledPane animated="false" text="details">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                 <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="ALWAYS">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                          </rowConstraints>
+                          <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                          </padding>
+                          <children>
+                              <Text layoutX="25.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOM" GridPane.rowIndex="2" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CIN" />
+                              <Text layoutX="25.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRENOM" GridPane.rowIndex="3" />
+                              <Text layoutX="25.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MATRICULE" GridPane.rowIndex="1" />
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                  <children>
+                                      <TextField fx:id="txtCin" layoutX="-26.0" layoutY="1.0" prefHeight="30.0" prefWidth="145.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                  </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                                  <children>
+                                      <TextField fx:id="txtMatricule" layoutX="20.0" layoutY="2.0" prefHeight="30.0" prefWidth="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                  </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="155.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                                  <children>
+                                      <TextField fx:id="txtNom" layoutX="20.0" layoutY="2.0" prefHeight="30.0" prefWidth="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                  </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+                           <children>
+                              <TextField fx:id="txtPrenom" prefHeight="30.0" prefWidth="359.0" />
+                           </children>
+                              </AnchorPane>
+                        <Label text="Sexe" GridPane.rowIndex="4" />
+                        <Label text="Grade" GridPane.rowIndex="5" />
+                        <Label text="Lieu de naissance" GridPane.rowIndex="6" />
+                        <Label text="Date de naissance" GridPane.rowIndex="7" />
+                        <Label text="Situation familliale" GridPane.rowIndex="8" />
+                        <Label text="Telephone" GridPane.rowIndex="9" />
+                        <Label text="Nombre des enfants" GridPane.rowIndex="10" />
+                        <Label text="Date d'engagement" GridPane.rowIndex="11" />
+                        <Label text="Note" GridPane.rowIndex="12" />
+                        <Label text="Level" GridPane.rowIndex="13" />
+                        <Label text="email" GridPane.rowIndex="14" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+                           <children>
+                              <TextField fx:id="txtSexe" disable="true" layoutX="-9.0" layoutY="1.0" prefHeight="32.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
+                           <children>
+                              <TextField fx:id="txtGrade" disable="true" layoutX="-70.0" layoutY="1.0" prefHeight="32.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="6">
+                           <children>
+                             <TextField fx:id="txtLieuNaissance" disable="true" layoutX="-55.0" layoutY="-1.0" prefHeight="30.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="7">
+                           <children>
+                            <TextField fx:id="txtDateNaissance" disable="true" layoutX="-87.0" layoutY="-1.0" prefHeight="30.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="8">
+                           <children>
+                            <TextField fx:id="txtSituationFamilliale" disable="true" layoutX="-47.0" layoutY="-1.0" prefHeight="30.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="9">
+                           <children>
+                             <TextField fx:id="txtTelephone" disable="true" layoutX="-79.0" layoutY="7.0" prefHeight="38.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="10">
+                           <children>
+                              <TextField fx:id="txtNombreEnfants" disable="true" layoutX="-34.0" layoutY="1.0" prefHeight="32.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="11">
+                           <children>
+                              <TextField fx:id="txtDateEngagement" disable="true" layoutX="-72.0" layoutY="-1.0" prefHeight="30.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="12">
+                           <children>
+                              <TextField fx:id="txtNote" disable="true" layoutX="-48.0" layoutY="1.0" prefHeight="32.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="13">
+                           <children>
+                              <TextField fx:id="txtLevel" disable="true" layoutY="1.0" prefHeight="32.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="14">
+                           <children>
+                              <TextField fx:id="txtEmail" disable="true" layoutX="-7.0" prefHeight="31.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                          </children>
+                      </GridPane>      
+                                             </children></AnchorPane>
+                                    </content>
+                                  </TitledPane>
+                                  <TitledPane animated="false" text="Adresses">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox layoutX="13.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personnel Adresses" wrappingWidth="191.587890625">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TableView fx:id="tableAdresse" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="columnLieu" prefWidth="75.0" text="lieu" />
+                                                          <TableColumn fx:id="columnVille" prefWidth="75.0" text="Ville" />
+                                                          <TableColumn fx:id="columnActionAdresse" prefWidth="75.0" text="Actions" />
+                                                          
+                                                           
+                                                              </columns>
+                                                      </TableView>
+                                                      <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                                         <items>
+                                                          <Button fx:id="btnAddAdresse" disable="true" mnemonicParsing="false" onAction="#doAddAdresse" text="Ajouter Adresse" />
+                                                         </items></ToolBar>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </TitledPane>
+                                    <TitledPane animated="false" layoutX="10.0" layoutY="35.0" text="Members de la famille">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox layoutX="13.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personnel Famille" wrappingWidth="191.587890625">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TableView fx:id="tableMembre" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="columnNomMembre" prefWidth="75.0" text="nom" />
+                                                            <TableColumn fx:id="columnPrenomMembre" prefWidth="75.0" text="prenom" />
+                                                            <TableColumn fx:id="columndegreMembre" prefWidth="94.0" text="degre de parenté" />
+                                                            <TableColumn fx:id="columnNaissanceMembre" prefWidth="56.0" text="date de naissance" />
+                                                            <TableColumn fx:id="columnfonctionMembre" prefWidth="56.0" text="fonction" />
+                                                            <TableColumn fx:id="columnActionMembre" prefWidth="56.0" text="Actions" />
+                                                         </columns>
+                                                      </TableView>
+                                                      <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                                         <items>
+                                                            <Button fx:id="btnAddMembre" disable="true" mnemonicParsing="false" onAction="#doAddMembre" text="Ajouter Membre" />
+                                                         </items>
+                                                      </ToolBar>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" layoutX="10.0" layoutY="60.0" text="Conges">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox layoutX="13.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personnel Conges" wrappingWidth="191.587890625">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TableView fx:id="tableConge" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <columns>
+                                                            <TableColumn fx:id="columnIdConge" prefWidth="75.0" text="Id Conge" />
+                                                            <TableColumn fx:id="columnDateDemande" prefWidth="75.0" text="Date demande" />
+                                                            <TableColumn fx:id="columnNatureConge" prefWidth="94.0" text="Nature Conge" />
+                                                            <TableColumn fx:id="columnDebutConge" prefWidth="56.0" text="Date debut" />
+                                                            <TableColumn fx:id="columnFinConge" prefWidth="56.0" text="Date Fin" />
+                                                            <TableColumn fx:id="columnContenuConge" prefWidth="56.0" text="Contenu" />
+                                                            <TableColumn fx:id="columnCommentaireChef" prefWidth="56.0" text="Commentaire Chef" />
+                                                            <TableColumn fx:id="columnEtatConge" prefWidth="56.0" text="Etat" />
+                                                            <TableColumn fx:id="columnActionConge" prefWidth="56.0" text="Actions" />
+                                                         </columns>
+                                                      </TableView>
+                                                      <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                                         <items>
+                                                            <Button fx:id="btnAddConge" disable="true" mnemonicParsing="false" onAction="#doAddConge" text="Ajouter Conge" />
+                                                         </items>
+                                                      </ToolBar>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                </panes>
+                              </Accordion>
+                           </children>
+                        </VBox>
+                        </content>
+                    </ScrollPane>
+               </items>
+            </SplitPane>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <ToolBar BorderPane.alignment="CENTER">
+            <items>
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#newPersonnel" prefHeight="35.0" prefWidth="120.0" text="%javafx.action.new">
+                   
+                    <tooltip>
+                        <Tooltip text="%scene.employee.tooltips.new" />
+                    </tooltip>
+                </Button>
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadData" prefHeight="35.0" prefWidth="120.0" text="%javafx.action.refresh">
+                   
+                </Button>
+            </items>
+        </ToolBar>
+    </bottom>
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="5.0">
+            <children>
+                
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personnels :" underline="true">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Text>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </top>
+</BorderPane>

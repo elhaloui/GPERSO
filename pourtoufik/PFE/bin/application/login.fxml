@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="608.0" fitWidth="915.0" pickOnBounds="true" AnchorPane.bottomAnchor="-4.0">
+         <image>
+            <Image url="@../images/abstract-hd-wallpaper-674-1366x768.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="14.0" layoutY="457.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Chef de service (GUI)" />
+   </children>
+</AnchorPane>

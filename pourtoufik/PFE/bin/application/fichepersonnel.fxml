@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="898.0" prefHeight="600.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="616.0" fitWidth="914.0" layoutX="-6.0" layoutY="-8.0" opacity="0.55" pickOnBounds="true" AnchorPane.bottomAnchor="-8.0">
+         <image>
+            <Image url="@../images/abstract-hd-wallpaper-674-1366x768.jpg" />
+         </image>
+      </ImageView>
+      <TabPane prefHeight="600.0" prefWidth="898.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Fiche de renseignement">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+					 <ScrollPane opacity="0.59" prefHeight="200.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <content>
+                           <Pane prefHeight="1900.0" prefWidth="898.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <Label layoutX="19.0" layoutY="121.0" prefHeight="35.0" prefWidth="71.0" text="GRADE:">
+                                    <font>
+                                       <Font name="Calibri Bold" size="19.0" />
+                                    </font>
+                                 </Label>
+                                    <Label layoutX="21.0" layoutY="343.0" prefHeight="35.0" prefWidth="115.0" text="PROVINCE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="403.0" layoutY="162.0" prefHeight="35.0" prefWidth="93.0" text="ETAT CIVIL:" textFill="#00ae06" underline="true">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="335.0" layoutY="121.0" prefHeight="35.0" prefWidth="65.0" text="CORPS:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="448.0" prefHeight="35.0" prefWidth="218.0" text="PROFESSION DE LA MERE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="378.0" prefHeight="35.0" prefWidth="71.0" text="FILS DE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="518.0" prefHeight="35.0" prefWidth="265.0" text="NOM ET PRENOM DE L'EPOUSE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="553.0" prefHeight="35.0" prefWidth="211.0" text="PROFESSION DE L'EPOUSE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="483.0" prefHeight="35.0" prefWidth="233.0" text="SITUATION MATRIMONIALE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="413.0" prefHeight="35.0" prefWidth="193.0" text="PROFESSION DU PERE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="308.0" prefHeight="35.0" prefWidth="101.0" text="COMMUNE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="273.0" prefHeight="35.0" prefWidth="172.0" text="DATE DE NAISSANCE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="203.0" prefHeight="35.0" prefWidth="53.0" text="NOM:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="588.0" prefHeight="35.0" prefWidth="176.0" text="NOMBRE D'ENFANTS:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView layoutX="15.0" layoutY="863.0" prefHeight="197.0" prefWidth="862.0">
+                                      <columns>
+                                        <TableColumn prefWidth="165.0" text="NOM" />
+                                        <TableColumn prefWidth="146.0" text="PRENOM" />
+                                          <TableColumn prefWidth="130.0" text="DEGRE DE PARENTE" />
+                                          <TableColumn prefWidth="131.0" text="DATE DE NAISSANCE" />
+                                          <TableColumn prefWidth="138.0" text="SITUATION" />
+                                          <TableColumn prefWidth="151.0" text="ADRESSE" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="245.0" layoutY="814.0" prefHeight="35.0" prefWidth="366.0" text="(ENFANTS ET AUTRES PERSONNES A CHARGE)" textFill="#00ae06" underline="true">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox layoutX="18.0" layoutY="1116.0">
+                                       <children>
+                                          <Label layoutX="18.0" layoutY="1116.0" prefHeight="35.0" prefWidth="211.0" text="DIPLOME UNIVERSITAIRE:">
+                                             <font>
+                                                <Font name="Calibri Bold" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="35.0" prefWidth="422.0" textFill="RED">
+                                             <font>
+                                                <Font name="Eras Bold ITC" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="18.0" layoutY="1151.0" prefHeight="35.0" prefWidth="774.0">
+                                       <children>
+                                          <Label layoutX="18.0" layoutY="1151.0" prefHeight="35.0" prefWidth="199.0" text="NIVEAU D'INSTRUCTION:">
+                                             <font>
+                                                <Font name="Calibri Bold" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="217.0" layoutY="1151.0" prefHeight="35.0" prefWidth="534.0" textFill="RED">
+                                             <font>
+                                                <Font name="Eras Bold ITC" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label layoutX="18.0" layoutY="1186.0" prefHeight="35.0" prefWidth="178.0" text="LANGUE ETRANGERE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="521.0" layoutY="1186.0" prefHeight="35.0" prefWidth="138.0" text="DIALECTE PARLE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="328.0" layoutY="1284.0" prefHeight="35.0" prefWidth="237.0" text="RENSEIGNEMENT MILITAIRES:" textFill="#00ae06" underline="true">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox layoutX="8.0" layoutY="1360.0" prefHeight="174.0" prefWidth="868.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="20.0" layoutY="1360.0" prefHeight="35.0" prefWidth="249.0" text="ORIGINE(ORIGINE OU RANGS):">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="30.0" prefWidth="478.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="18.0" layoutY="1395.0" prefHeight="35.0" prefWidth="160.0" text="ARME OU SERVICE:">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="30.0" prefWidth="706.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="1438.0" prefHeight="35.0" prefWidth="132.0" text="GRADE ACTUEL:">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="30.0" prefWidth="726.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="1487.0" prefHeight="34.0" prefWidth="254.0" text="FONCTION AU SEIN DE L'UNITE:">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="30.0" prefWidth="608.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="1521.0" prefHeight="35.0" prefWidth="117.0" text="DECORATION:">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="30.0" prefWidth="742.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Label layoutX="8.0" layoutY="1534.0" prefHeight="35.0" prefWidth="237.0" text="DATE D'ENTREE EN SERVICE:">
+                                                   <font>
+                                                      <Font name="Calibri Bold" size="19.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="245.0" layoutY="1534.0" prefHeight="35.0" prefWidth="422.0" textFill="RED">
+                                                   <font>
+                                                      <Font name="Eras Bold ITC" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <Label layoutX="278.0" layoutY="38.0" prefHeight="35.0" prefWidth="337.0" text="FICHE DE RENSEIGNEMENTS" textFill="#b90707" underline="true">
+                                       <font>
+                                          <Font name="Calibri Bold" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="722.0" layoutY="14.0" prefHeight="140.0" prefWidth="137.0" />
+                                    <Label layoutX="402.0" layoutY="1613.0" prefHeight="35.0" prefWidth="81.0" text="ADRESSE:" textFill="#00ae06" underline="true">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="1669.0" prefHeight="35.0" prefWidth="52.0" text="VILLE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="18.0" layoutY="1704.0" prefHeight="35.0" prefWidth="201.0" text="ADRESSE PERSONNELLE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="1747.0" prefHeight="35.0" prefWidth="99.0" text="Téléphone:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="18.0" layoutY="1790.0" prefHeight="35.0" prefWidth="539.0" text="INFORMATIONS DE LA PERSONNE A PARVENIR EN CAS D'URGENCE:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="214.0" layoutY="1704.0" prefHeight="35.0" prefWidth="662.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="119.0" layoutY="1747.0" prefHeight="35.0" prefWidth="364.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="46.0" layoutY="1825.0" prefHeight="72.0" prefWidth="648.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="74.0" layoutY="1669.0" prefHeight="35.0" prefWidth="422.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="196.0" layoutY="1186.0" prefHeight="35.0" prefWidth="316.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="659.0" layoutY="1189.0" prefHeight="30.0" prefWidth="214.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="238.0" prefHeight="35.0" prefWidth="80.0" text="PRENOM:">
+                                       <font>
+                                          <Font name="Calibri Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="124.0" layoutY="346.0" prefHeight="30.0" prefWidth="554.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="402.0" layoutY="124.0" prefHeight="30.0" prefWidth="355.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="241.0" prefHeight="30.0" prefWidth="573.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="75.0" layoutY="206.0" prefHeight="30.0" prefWidth="527.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="196.0" layoutY="276.0" prefHeight="30.0" prefWidth="642.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="165.0" prefHeight="30.0" prefWidth="242.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="124.0" layoutY="311.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="134.0" layoutY="321.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="100.0" layoutY="381.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="207.0" layoutY="416.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="231.0" layoutY="451.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="252.0" layoutY="486.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="275.0" layoutY="521.0" prefHeight="30.0" prefWidth="610.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="240.0" layoutY="556.0" prefHeight="30.0" prefWidth="625.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="196.0" layoutY="591.0" prefHeight="30.0" prefWidth="648.0" textFill="RED">
+                                       <font>
+                                          <Font name="Eras Bold ITC" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/11949945421472684305edit.svg.hi.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="8.0" layoutY="47.0" prefHeight="17.0" prefWidth="50.0" text="Modifier" />
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="72.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/poubelle.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="65.0" layoutY="47.0" prefHeight="17.0" prefWidth="59.0" text="Supprimer" />
+                              </children>
+                           </Pane>
+   </content>
+                     </ScrollPane>
+					 </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Consulter les absences">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutY="300.0" prefHeight="271.0" prefWidth="898.0">
+                          <columns>
+                            <TableColumn prefWidth="149.0" text="Date d'absence" />
+                            <TableColumn minWidth="0.0" prefWidth="138.0" text="Durée d'absence" />
+                              <TableColumn prefWidth="355.0" text="Motif d'absence" />
+                              <TableColumn prefWidth="255.0" text="Decision du chef" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="401.0" layoutY="48.0" prefHeight="35.0" prefWidth="134.0" text="ABSENCES" textFill="#b90707" underline="true">
+                           <font>
+                              <Font name="Calibri Bold" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="601.0" layoutY="258.0" mnemonicParsing="false" opacity="0.44" prefHeight="26.0" prefWidth="138.0" stylesheets="@application.css" text="Ajouter absence" />
+                        <Button layoutX="746.0" layoutY="258.0" mnemonicParsing="false" opacity="0.44" prefHeight="26.0" prefWidth="138.0" stylesheets="@application.css" text="Envoyer notification" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Consulter les punitions">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutY="289.0" prefHeight="283.0" prefWidth="898.0">
+                          <columns>
+                            <TableColumn prefWidth="114.0" text="Date" />
+                              <TableColumn prefWidth="131.0" text="Nature" />
+                            <TableColumn prefWidth="206.0" text="Motif" />
+                              <TableColumn prefWidth="166.0" text="Durée" />
+                              <TableColumn prefWidth="176.0" text="Punisseur" />
+                          </columns>
+                           <effect>
+                              <ColorAdjust brightness="-0.35" contrast="0.23" hue="0.02" saturation="0.05" />
+                           </effect>
+                        </TableView>
+                        <Label layoutX="380.0" layoutY="23.0" prefHeight="35.0" prefWidth="139.0" text="PUNITIONS" textFill="#b90707" underline="true">
+                           <font>
+                              <Font name="Calibri Bold" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="746.0" layoutY="258.0" mnemonicParsing="false" opacity="0.44" prefHeight="26.0" prefWidth="138.0" stylesheets="@application.css" text="Ajouter punition" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Demande de congé">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="81.0" layoutY="124.0" prefHeight="197.0" prefWidth="137.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="82.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label layoutX="83.0" layoutY="181.0" text="Date debut" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Calibri" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="83.0" layoutY="153.0" text="Nature" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Calibri" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="81.0" layoutY="212.0" text="Date retour" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Calibri" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="81.0" layoutY="124.0" text="Objet" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="Calibri" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="81.0" layoutY="254.0" text="Demande" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Calibri" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="797.0" layoutY="497.0" mnemonicParsing="false" opacity="0.44" prefHeight="29.0" prefWidth="75.0" stylesheets="@application.css" text="Retour" />
+                        <Button layoutX="652.0" layoutY="497.0" mnemonicParsing="false" opacity="0.44" prefHeight="29.0" prefWidth="138.0" stylesheets="@application.css" text="Envoyer Demande" />
+                        <VBox layoutX="177.0" layoutY="124.0" prefHeight="402.0" prefWidth="278.0" spacing="3.0">
+                           <children>
+                              <TextField layoutX="177.0" layoutY="124.0">
+                                 <effect>
+                                    <ColorAdjust brightness="-0.2" contrast="0.02" saturation="-0.16" />
+                                 </effect>
+                              </TextField>
+                              <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" text="MenuButton">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </MenuButton>
+                              <DatePicker layoutX="177.0" layoutY="190.0">
+                                 <effect>
+                                    <ColorAdjust brightness="-0.2" contrast="0.02" saturation="-0.16" />
+                                 </effect>
+                              </DatePicker>
+                              <DatePicker layoutX="177.0" layoutY="226.0">
+                                 <effect>
+                                    <ColorAdjust brightness="-0.2" contrast="0.02" hue="0.05" saturation="-0.16" />
+                                 </effect>
+                              </DatePicker>
+                              <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="258.0" prefWidth="621.0">
+                                 <effect>
+                                    <ColorAdjust brightness="-0.2" contrast="0.02" saturation="0.02" />
+                                 </effect>
+                              </HTMLEditor>
+                           </children>
+                        </VBox>
+                        <Label layoutX="341.0" layoutY="34.0" prefHeight="35.0" prefWidth="259.0" text="DEMANDE DE CONGE" textFill="#b90707" underline="true">
+                           <font>
+                              <Font name="Calibri Bold" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Consulter les formations">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="746.0" layoutY="276.0" mnemonicParsing="false" opacity="0.44" prefHeight="26.0" prefWidth="138.0" stylesheets="@application.css" text="Envoyer Demande" />
+                        <TableView layoutY="315.0" opacity="0.85" prefHeight="257.0" prefWidth="898.0">
+                          <columns>
+                              <TableColumn prefWidth="75.0" text="Mes formations">
+                                 <columns>
+                                  <TableColumn minWidth="5.0" prefWidth="120.0" text="Nature" />
+                                    <TableColumn prefWidth="94.0" text="Date debut" />
+                                    <TableColumn prefWidth="113.0" text="Date fin" />
+                                    <TableColumn minWidth="0.0" prefWidth="152.0" text="Lieu de formation" />
+                                    <TableColumn minWidth="0.0" prefWidth="201.0" text="Diplôme obtenu" />
+                                  <TableColumn minWidth="0.0" prefWidth="217.0" text="Observations" />
+                                 </columns>
+                              </TableColumn>
+                          </columns>
+                        </TableView>
+                        <TableView opacity="0.85" prefHeight="257.0" prefWidth="898.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="Nouvelles formations (Nouveaux stages)">
+                                 <columns>
+                                    <TableColumn minWidth="5.0" prefWidth="120.0" text="Nature" />
+                                    <TableColumn prefWidth="94.0" text="Date debut" />
+                                    <TableColumn prefWidth="113.0" text="Date fin" />
+                                    <TableColumn minWidth="0.0" prefWidth="152.0" text="Lieu de formation" />
+                                    <TableColumn minWidth="0.0" prefWidth="201.0" text="Diplôme obtenu" />
+                                    <TableColumn minWidth="0.0" prefWidth="217.0" text="Observations" />
+                                 </columns>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Unités">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="709.0">
+                     <children>
+                        <HBox layoutX="14.0" layoutY="42.0" prefHeight="25.0" prefWidth="330.0" spacing="20.0">
+                           <children>
+                              <Label layoutX="7.0" layoutY="130.0" prefHeight="23.0" prefWidth="145.0" text="Choisir une unité">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="157.0" layoutY="134.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <TableView layoutY="90.0" opacity="0.9" prefHeight="477.0" prefWidth="481.0">
+                          <columns>
+                              <TableColumn prefWidth="102.0" text="CIN" />
+                            <TableColumn prefWidth="191.0" text="Nom" />
+                            <TableColumn prefWidth="187.0" text="Prenom" />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="495.0" layoutY="90.0" opacity="0.9" prefHeight="480.0" prefWidth="402.0">
+                          <columns>
+                            <TableColumn prefWidth="401.0" text="Sous-unités" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Poste et service">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="166.0" prefHeight="35.0" prefWidth="145.0" text="Poste courant:">
+                           <font>
+                              <Font name="Calibri Light" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="207.0" prefHeight="35.0" prefWidth="351.0" text="Fonction courante:">
+                           <font>
+                              <Font name="Calibri Light" size="24.0" />
+                           </font>
+                        </Label>
+                        <TableView layoutY="327.0" prefHeight="244.0" prefWidth="898.0">
+                          <columns>
+                              <TableColumn prefWidth="75.0" text="Services effectués">
+                                 <columns>
+                                    <TableColumn prefWidth="328.0" text="Date d'effectuation" />
+                                    <TableColumn prefWidth="569.0" text="Service" />
+                                 </columns>
+                              </TableColumn>
+                          </columns>
+                        </TableView>
+                        <Label layoutX="207.0" layoutY="208.0" prefHeight="35.0" prefWidth="145.0" text="REQUETE">
+                           <font>
+                              <Font name="Calibri Light" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="207.0" layoutY="166.0" prefHeight="35.0" prefWidth="145.0" text="REQUETE">
+                           <font>
+                              <Font name="Calibri Light" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Affectations successives">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="6.0" layoutY="288.0" prefHeight="277.0" prefWidth="898.0">
+                          <columns>
+                            <TableColumn prefWidth="172.0" text="Corps ou service" />
+                            <TableColumn prefWidth="143.0" text="Lieu d'implantation" />
+                              <TableColumn prefWidth="138.0" text="Date d'affectation" />
+                              <TableColumn prefWidth="194.0" text="Fonctions occupées" />
+                              <TableColumn prefWidth="244.0" text="Observations" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="288.0" layoutY="48.0" prefHeight="35.0" prefWidth="337.0" text="AFFECTATIONS SUCCESSIVES" textFill="#b90707" underline="true">
+                           <font>
+                              <Font name="Calibri Bold" size="28.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="608.0" fitWidth="915.0" opacity="0.8" pickOnBounds="true" AnchorPane.bottomAnchor="-4.0">
+         <image>
+            <Image url="@../images/abstract-hd-wallpaper-674-1366x768.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Chef de service (GUI)" />
+      <TableView layoutX="317.0" layoutY="382.0" prefHeight="222.0" prefWidth="915.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="382.0">
+        <columns>
+          <TableColumn prefWidth="108.0" text="Nombre d'enfants" />
+          <TableColumn prefWidth="106.0" text="Coût nbr enfants" />
+            <TableColumn prefWidth="111.0" text="Situation familiale" />
+            <TableColumn prefWidth="143.0" text="Coût situation familiale" />
+            <TableColumn prefWidth="139.0" text="Coût de chaque année" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

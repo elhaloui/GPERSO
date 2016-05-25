@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="600.0" minWidth="898.0" prefHeight="600.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="608.0" fitWidth="906.0" layoutX="-1.0" layoutY="7.0" pickOnBounds="true" AnchorPane.bottomAnchor="-7.0">
+         <image>
+            <Image url="@../images/abstract-hd-wallpaper-674-1366x768.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="14.0" layoutY="286.0">
+         <children>
+            <Button layoutX="14.0" layoutY="268.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Mon fiche personnel" />
+            <Button layoutX="14.0" layoutY="440.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Unités" />
+            <Button layoutX="14.0" layoutY="490.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Chef de service (GUI)" />
+            <Button layoutX="14.0" layoutY="540.0" mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Chef de corps (GUI)" />
+            <Button mnemonicParsing="false" opacity="0.44" prefHeight="50.0" prefWidth="179.0" stylesheets="@application.css" text="Chef de service (GUI)" />
+         </children>
+      </VBox>
+      <Text fill="#7bb2d3" focusTraversable="true" fontSmoothingType="LCD" layoutX="191.0" layoutY="73.0" stroke="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="G.A.P Manager" textAlignment="CENTER" wrappingWidth="516.0">
+         <font>
+            <Font name="Tw Cen MT" size="69.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#076fa8" height="56.58" radius="44.037499999999994" spread="0.57" width="121.57" />
+         </effect>
+      </Text>
+   </children>
+</AnchorPane>
