@@ -77,31 +77,31 @@ public class InnerScene {
     
     @Bean
     @Scope("prototype")
-    public PersonnelController personnelController(@Value("/stage/scene/personnel.fxml") String fxml) throws IOException {
+    public PersonnelController personnelController(@Qualifier("PersonnelController")  @Value("/stage/scene/personnel.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (PersonnelController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public ServiceController serviceController(@Value("/stage/scene/service.fxml") String fxml) throws IOException {
+    public ServiceController serviceController(@Qualifier("ServiceController")  @Value("/stage/scene/service.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (ServiceController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public CongeController congeController(@Value("/stage/scene/conge.fxml") String fxml) throws IOException {
+    public CongeController congeController(@Qualifier("CongeController")  @Value("/stage/scene/conge.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (CongeController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public FormationController formationController(@Value("/stage/scene/formation.fxml") String fxml) throws IOException {
+    public FormationController formationController(@Qualifier("FormationController")  @Value("/stage/scene/formation.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (FormationController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public PosteController posteController (@Qualifier("PosteController") @Value("/stage/scene/poste.fxml") String fxml) throws IOException {
+    public PosteController posteController ( @Qualifier("PosteController")  @Value("/stage/scene/poste.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (PosteController) getInit();
     }
@@ -109,35 +109,35 @@ public class InnerScene {
     
     @Bean
     @Scope("prototype")
-    public PersonnelDataController personnelDataController(@Value("/stage/scene/personnel_data.fxml") String fxml)
+    public PersonnelDataController personnelDataController(@Qualifier("PersonnelDataController")  @Value("/stage/scene/personnel_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (PersonnelDataController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public ServiceDataController serviceData(@Value("/stage/scene/service_data.fxml") String fxml)
+    public ServiceDataController serviceData(@Qualifier("ServiceDataController")  @Value("/stage/scene/service_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (ServiceDataController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public CongeDataController congeData(@Value("/stage/scene/conge_data.fxml") String fxml)
+    public CongeDataController congeData(@Qualifier("CongeDataController")  @Value("/stage/scene/conge_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (CongeDataController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public FormationDataController formationData(@Value("/stage/scene/formation_data.fxml") String fxml)
+    public FormationDataController formationData(@Qualifier("FormationDataController")  @Value("/stage/scene/formation_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (FormationDataController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public PosteDataController postenData(@Value("/stage/scene/poste_data.fxml") String fxml)
+    public PosteDataController postenData(@Qualifier("PosteDataController")  @Value("/stage/scene/poste_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (PosteDataController) getInit();
@@ -147,14 +147,14 @@ public class InnerScene {
     
     @Bean
     @Scope("prototype")
-    public AccountController accounts(@Value("/stage/scene/account.fxml") String fxml) throws IOException {
+    public AccountController accounts(@Qualifier("AccountController")  @Value("/stage/scene/account.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (AccountController) getInit();
     }
 
     @Bean
     @Scope("prototype")
-    public AccountDataController accountData(@Value("/stage/scene/account_data.fxml") String fxml)
+    public AccountDataController accountData(@Qualifier("AccountDataController")  @Value("/stage/scene/account_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (AccountDataController) getInit();
