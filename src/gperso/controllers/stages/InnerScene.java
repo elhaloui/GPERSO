@@ -77,31 +77,31 @@ public class InnerScene {
     
     @Bean
     @Scope("prototype")
-    public PersonnelController personnels(@Value("/stage/scene/personnel.fxml") String fxml) throws IOException {
+    public PersonnelController personnelController(@Value("/stage/scene/personnel.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (PersonnelController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public ServiceController services(@Value("/stage/scene/service.fxml") String fxml) throws IOException {
+    public ServiceController serviceController(@Value("/stage/scene/service.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (ServiceController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public CongeController conges(@Value("/stage/scene/conge.fxml") String fxml) throws IOException {
+    public CongeController congeController(@Value("/stage/scene/conge.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (CongeController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public FormationController formations(@Value("/stage/scene/formation.fxml") String fxml) throws IOException {
+    public FormationController formationController(@Value("/stage/scene/formation.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (FormationController) getInit();
     }
     @Bean
     @Scope("prototype")
-    public PosteController postes (@Value("/stage/scene/poste.fxml") String fxml) throws IOException {
+    public PosteController posteController (@Qualifier("PosteController") @Value("/stage/scene/poste.fxml") String fxml) throws IOException {
         setContentInitialize(fxml);
         return (PosteController) getInit();
     }
@@ -109,7 +109,7 @@ public class InnerScene {
     
     @Bean
     @Scope("prototype")
-    public PersonnelDataController personnelData(@Value("/stage/scene/personnel_data.fxml") String fxml)
+    public PersonnelDataController personnelDataController(@Value("/stage/scene/personnel_data.fxml") String fxml)
             throws IOException {
         setContentInitialize(fxml);
         return (PersonnelDataController) getInit();
