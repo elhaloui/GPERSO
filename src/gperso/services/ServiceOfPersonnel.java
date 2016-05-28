@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * 
@@ -44,5 +49,19 @@ public class ServiceOfPersonnel {
 
     public List<Personnel> findAll() throws Exception {
         return getSessionFactory().createQuery("from Personnel").list();
-    }
+     }
+    
+    public Personnel findOne(String cin) throws Exception {
+        return getSessionFactory().get(Personnel.class, cin);
+     }
+    
+     public List<String> findByCritere(String value) throws Exception {
+        Criteria cr = getSessionFactory().createCriteria(Personnel.class);
+        ProjectionList projList = Projections.projectionList();
+        projList.add(Projections.property("cin"));
+        cr.setProjection(projList);
+        cr.add(Restrictions.like("cin", value+"%"));
+        return cr.list();
+
+     }
 }

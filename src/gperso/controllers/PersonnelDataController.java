@@ -8,7 +8,11 @@ import gperso.helpers.notifications.ValidatorMessages;
 import gperso.controllers.HomeController;
 import gperso.helpers.FxInitializable;
 import gperso.controllers.stages.InnerScene;
+import gperso.helpers.AutheticationLevel;
+import gperso.models.Account;
+import gperso.models.Level;
 import gperso.models.Personnel;
+import gperso.services.ServiceOfAccount;
 import gperso.services.ServiceOfPersonnel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,7 +26,9 @@ import org.springframework.context.MessageSource;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 /**
@@ -69,6 +75,7 @@ public class PersonnelDataController implements FxInitializable {
 
     private InnerScene innerScene;
     private ServiceOfPersonnel personnelService;
+    private ServiceOfAccount accountService;
     private DialogWindows windows;
     private DialogBalloon ballon;
     private ValidationSupport validationSupport;
@@ -97,6 +104,10 @@ public class PersonnelDataController implements FxInitializable {
     @Autowired
     public void setPersonnelService(ServiceOfPersonnel personnelService) {
         this.personnelService = personnelService;
+    }
+     @Autowired
+    public void setAccountService(ServiceOfAccount accountService) {
+        this.accountService = accountService;
     }
 
     
@@ -176,6 +187,7 @@ public class PersonnelDataController implements FxInitializable {
         anPersonnel.setSituationFamilliale(txtSituationFamilliale.getValue());
         anPersonnel.setTelephone(txtTelephone.getText());
         
+        
         if (isUpdate) {
             try {
                 personnelService.update(anPersonnel);
@@ -187,6 +199,15 @@ public class PersonnelDataController implements FxInitializable {
             }
         } else {
             try {
+                // creer un compte utilisateur avec la creation de personnel
+                    Account anAccount = new Account();
+                    anAccount.setUsername(anPersonnel.getCin());
+                    anAccount.setPasswd(anPersonnel.getCin());
+                    anAccount.setActive(true);
+                    anAccount.setFullname(anPersonnel.getNom()+" "+anPersonnel.getPrenom());
+                    anAccount.setLevel( anPersonnel.getLevel()==1 ? Level.CHEF.getValue():Level.PERSONNEL.getValue());
+                    anAccount.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+                    accountService.save(anAccount);
                 personnelService.save(anPersonnel);
                 ballon.sucessedSave(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), anPersonnel.getNom());
                 newData();

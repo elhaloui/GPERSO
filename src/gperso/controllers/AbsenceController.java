@@ -1,7 +1,5 @@
 package gperso.controllers;
 
-import gperso.controllers.AbsenceDataController;
-import gperso.controllers.HomeController;
 import gperso.helpers.FxInitializable;
 import gperso.helpers.TableViewColumnAction;
 import gperso.helpers.notifications.DialogBalloon;
@@ -21,11 +19,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.springframework.stereotype.Component;
-import java.time.LocalDate;
 
 /**
  * Created by dimmaryanto on 10/1/15.
@@ -80,7 +76,7 @@ public class AbsenceController implements FxInitializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         columnIdAbsence.setCellValueFactory(new PropertyValueFactory<>("id"));
-       columnCinPersonnel.setCellValueFactory(new PropertyValueFactory<>("personnel.cin"));
+       columnCinPersonnel.setCellValueFactory(new PropertyValueFactory<>("personnel"));
        columnActionAbsence.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {

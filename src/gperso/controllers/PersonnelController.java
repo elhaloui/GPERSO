@@ -89,7 +89,7 @@ public class PersonnelController implements FxInitializable {
     
     
     @FXML
-    private TableColumn columnAction;
+    public TableColumn columnAction;
     @FXML
     private TableColumn columnActionAdresse;
     @FXML
@@ -129,11 +129,13 @@ public class PersonnelController implements FxInitializable {
     private TextField txtGrade;
     
     @FXML 
-    private Button btnAddAdresse;
+    public Button btnAddAdresse;
      @FXML 
-    private Button btnAddMembre;
+    public  Button btnAddMembre;
     @FXML 
-    private Button btnAddConge;
+    public Button btnAddConge;
+    @FXML 
+    public Button btnAddPersonnel;
     
     
 
@@ -251,7 +253,14 @@ public class PersonnelController implements FxInitializable {
     public void loadData() {
         try {
             tableView.getItems().clear();
+            if(homeAction.getAccount().getLevel().equals("CHEF DE CORPS"))
+            {
             windows.loading(tableView.getItems(), service.findAll(), lang.getSources(LangProperties.LIST_OF_EMPLOYEES));
+            }
+            else
+            {
+            tableView.getItems().add(service.findOne(homeAction.getAccount().getUsername()));
+            }
             tableView.requestFocus();
         } catch (Exception e) {
             windows.errorLoading(lang.getSources(LangProperties.LIST_OF_EMPLOYEES), e);
@@ -359,7 +368,7 @@ public class PersonnelController implements FxInitializable {
         txtSexe.setText(selectedPersonnel.getSexe()+"");
         txtSituationFamilliale.setText(selectedPersonnel.getSituationFamilliale());
         txtTelephone.setText(selectedPersonnel.getTelephone());
-        txtdateEngagement.setText(selectedPersonnel.getDateEngagement().toLocalDate().toString());
+//        txtdateEngagement.setText(selectedPersonnel.getDateEngagement().toLocalDate().toString());
          tableAdresse.getItems().clear();
          tableAdresse.setItems( FXCollections.observableArrayList(selectedPersonnel.getAdresses()));
          tableMembre.getItems().clear();

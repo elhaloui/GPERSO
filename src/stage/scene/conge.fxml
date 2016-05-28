@@ -68,15 +68,7 @@
     <bottom>
         <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <items>
-                <Button defaultButton="true" mnemonicParsing="false" onAction="#newConge" prefHeight="35.0" prefWidth="120.0" text="Ajouter Conge">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="PLUS" size="18" />
-                    </graphic>
-                    <tooltip>
-                        <Tooltip text="%scene.department.tooltips.new" />
-                    </tooltip>
-                </Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadData" prefHeight="35.0" prefWidth="120.0">
+               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadData" prefHeight="35.0" prefWidth="120.0">
                     <graphic>
                         <FontAwesomeIconView glyphName="REFRESH" size="18" />
                     </graphic>
@@ -88,7 +80,7 @@
         <HBox spacing="10.0">
             <children>
                 <FontAwesomeIconView glyphName="BUILDING_ALT" size="28" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Conges" underline="true">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Les demandes des Conges" underline="true">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>

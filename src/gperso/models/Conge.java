@@ -33,7 +33,7 @@ public class Conge extends BasedTableEntity {
     @Column (name = "commentaire_chef" , length =200 )
     private String commentaireChef ;
     
-    @Column (name = "etat_conge" , length =10 )
+    @Column (name = "etat_conge" , length =20 )
     private String etatConge ;
     
     @ManyToOne

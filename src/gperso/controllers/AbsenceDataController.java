@@ -5,7 +5,6 @@ import gperso.helpers.notifications.LangProperties;
 import gperso.helpers.notifications.DialogWindows;
 import gperso.helpers.notifications.LangSource;
 import gperso.helpers.notifications.DialogBalloon;
-import gperso.controllers.HomeController;
 import gperso.helpers.FxInitializable;
 import gperso.controllers.stages.InnerScene;
 import gperso.models.Absence;
@@ -107,7 +106,8 @@ public class AbsenceDataController implements FxInitializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        
+      txtDureeAbsence.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory( 0, Integer.MAX_VALUE));
+           
     }
 
    

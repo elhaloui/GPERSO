@@ -41,8 +41,6 @@ public class HomeController implements FxInitializable {
     private BorderPane content;
     @FXML
     private Label txtUserId;
-    @FXML
-    private Button btnUnitOfItem;
     /////////////////////////////////////::::::::
     @FXML
     private Button btnPersonnel;
@@ -54,6 +52,11 @@ public class HomeController implements FxInitializable {
     private Button btnConge;
     @FXML
     private Button btnPoste;
+    @FXML
+    private Button btnAbsence;
+     @FXML
+    private Button btnPunition;
+     
     /////////////////::::::::::::::::::::::::::
     
     private Hyperlink logoutAction;
@@ -69,6 +72,7 @@ public class HomeController implements FxInitializable {
     private Text statusLeftUser;
     @FXML
     private Text statusRightUser;
+    
 
     @Override
     public void doClose() {
@@ -78,6 +82,10 @@ public class HomeController implements FxInitializable {
             System.exit(0);
             e.printStackTrace();
         }
+    }
+     @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.springContext = applicationContext;
     }
 
     @Autowired
@@ -90,11 +98,7 @@ public class HomeController implements FxInitializable {
         this.messageSource = messageSource;
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.springContext = applicationContext;
-    }
-
+   
     public void updateContent() {
         this.content.setCenter(innerScene.getNode());
         this.content.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
@@ -121,6 +125,20 @@ public class HomeController implements FxInitializable {
     @FXML
     public void showPersonnels() {
         PersonnelController action = springContext.getBean(PersonnelController.class);
+         if (account != null && account.getActive() && account.getLevel().equals("PERSONNEL")) {
+           action.columnAction.setVisible(false);
+           action.btnAddPersonnel.setVisible(false);
+           action.btnAddAdresse.setVisible(true);
+           action.btnAddConge.setVisible(true);
+           action.btnAddMembre.setVisible(true);
+        }
+         else if (account != null && account.getActive() && account.getLevel().equals("CHEF DE CORPS")) {
+           action.btnAddAdresse.setVisible(false);
+           action.btnAddConge.setVisible(false);
+           action.btnAddMembre.setVisible(false);
+           action.columnAction.setVisible(true);
+           action.btnAddPersonnel.setVisible(true);
+        }
         updateContent();
         action.loadData();
     }
@@ -141,6 +159,9 @@ public class HomeController implements FxInitializable {
     @FXML
     public void showFormations() {
         FormationController action = springContext.getBean(FormationController.class);
+        if (account != null && account.getActive() && account.getLevel().equals("CHEF DE CORPS")) {
+           action.PaneParticipation.setVisible(true);
+        }
         updateContent();
         action.loadData();
     }
@@ -148,6 +169,12 @@ public class HomeController implements FxInitializable {
     @FXML
     public void showAbsences() {
         AbsenceController action = springContext.getBean(AbsenceController.class);
+        updateContent();
+        action.loadData();
+    }
+     @FXML
+    public void showPunitions() {
+        PunitionController action = springContext.getBean(PunitionController.class);
         updateContent();
         action.loadData();
     }
@@ -222,28 +249,35 @@ public class HomeController implements FxInitializable {
         this.account = anAccount;
         statusAccount(anAccount);
         enableMenuSettings(false);
-        if (anAccount != null && anAccount.getActive() && anAccount.getLevel().equals("ADMIN")) {
+        if (anAccount != null && anAccount.getActive() && anAccount.getLevel().equals("CHEF DE CORPS")) {
             enableMenuSettings(true);
             expandedMenu(true);
             enableMenuMasterData(true);
-            
-            
-        } else if (anAccount != null && anAccount.getLevel().equals("BENDAHARA")) {
+            btnAbsence.setVisible(true);
+            btnConge.setVisible(true);
+            btnPoste.setVisible(true);
+            btnPunition.setVisible(true);
+            btnService.setVisible(true);
+        } else if (anAccount != null && anAccount.getLevel().equals("CHEF DE SERVICE")) {
             expandedMenu(false);
             //enable masterdata
-            btnUnitOfItem.setDisable(false);
             menuMasterData.setOpacity(1.0);
-        } else if (anAccount != null && anAccount.getLevel().equals("PRODUKSI")) {
+            btnAbsence.setVisible(false);
+            btnConge.setVisible(false);
+            btnPoste.setVisible(false);
+            btnPunition.setVisible(false);
+            btnService.setVisible(false);
+        } else if (anAccount != null && anAccount.getLevel().equals("PERSONNEL")) {
             expandedMenu(false);
             enableMenuMasterData(true);
-            //disable master data
             menuMasterData.setOpacity(1.0);
+            btnAbsence.setVisible(false);
+            btnConge.setVisible(false);
+            btnPoste.setVisible(false);
+            btnPunition.setVisible(false);
+            btnService.setVisible(false);
             
-        } else if (anAccount != null && anAccount.getLevel().equals("PEMILIK")) {
-            expandedMenu(false);
-            enableMenuMasterData(true);
-            menuMasterData.setOpacity(1.0);
-        }
+        } 
     }
 
     private void enableMenuMasterData(Boolean active) {
@@ -252,6 +286,9 @@ public class HomeController implements FxInitializable {
         btnService.setDisable(!active);
         btnConge.setDisable(!active);
         btnPoste.setDisable(!active);
+        btnAbsence.setDisable(!active);
+        btnPunition.setDisable(!active);
+        
        
         
     }

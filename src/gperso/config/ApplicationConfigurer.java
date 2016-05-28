@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 @EnableTransactionManagement
 public class ApplicationConfigurer {
 
-    // untuk menaktifkan placeholder
+    
     @Bean
     public static PropertySourcesPlaceholderConfigurer sourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();

@@ -71,6 +71,10 @@ public class Personnel extends BasedTableEntity {
     @JoinColumn(name = "cin_per")
     private List<Adresse> adresses = new ArrayList<Adresse>();
     
+    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @JoinColumn(name = "cin_per")
+    private List<DemandeFormation> demandes = new ArrayList<DemandeFormation>();
+    
     // Membres de famille
     @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JoinColumn(name = "cin_per")
@@ -98,6 +102,11 @@ public class Personnel extends BasedTableEntity {
 
     public Personnel() {
     }
+
+    public Personnel(String cin) {
+        this.cin = cin;
+    }
+    
 
     
 
@@ -140,6 +149,16 @@ public class Personnel extends BasedTableEntity {
     public void setAdresses(List<Adresse> adresses) {
         this.adresses = adresses;
     }
+
+    public List<DemandeFormation> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<DemandeFormation> demandes) {
+        this.demandes = demandes;
+    }
+    
+    
 
     public List<Membre> getMembres() {
         return membres;
@@ -277,6 +296,10 @@ public class Personnel extends BasedTableEntity {
         this.formations = formations;
     }
     
-    
+    @Override
+    public String toString()
+    {
+        return this.cin;
+    }
 
 }

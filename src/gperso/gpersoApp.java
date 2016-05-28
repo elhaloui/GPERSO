@@ -39,20 +39,16 @@ public class gpersoApp extends Application {
         worker.setOnSucceeded(event -> {
             
             HomeController home = context.getBean(HomeController.class);
-            System.out.println("*********************************************");
-            System.out.println(home);
-             home.doLogout();
+            home.doLogout();
             try {
                 ServiceOfAccount serviceAccount = context.getBean(ServiceOfAccount.class);
-                
                 Boolean adminAvailabel = false;
                 Iterator<Account> values = serviceAccount.findAll().iterator();
                 while (values.hasNext()) {
                     Account account = values.next();
                     if (account.getLevel().equals(AutheticationLevel.getValue(Level.ADMIM))&& account.getUsername().equals("admin")) {
                         adminAvailabel = true;
-                        System.out.println("admin is available");
-                    }
+                     }
                 }
                 if (!adminAvailabel) {
                     Account anAccount = new Account();
@@ -60,7 +56,7 @@ public class gpersoApp extends Application {
                     anAccount.setPasswd("admin");
                     anAccount.setActive(true);
                     anAccount.setFullname("Administrator");
-                    anAccount.setLevel(AutheticationLevel.getValue(Level.ADMIM));
+                    anAccount.setLevel(Level.ADMIM.getValue());
                     anAccount.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
                     serviceAccount.save(anAccount);
                 }
@@ -70,7 +66,7 @@ public class gpersoApp extends Application {
         });
 
        
-            Locale.setDefault(Locale.getDefault());
+   //         Locale.setDefault(Locale.getDefault());
             worker.run();
         
 

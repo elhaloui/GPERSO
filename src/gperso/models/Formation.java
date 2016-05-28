@@ -2,6 +2,8 @@ package gperso.models;
 
 import gperso.models.BasedTableEntity;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,6 +15,7 @@ import javax.persistence.*;
 public class Formation extends BasedTableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name ="id_formation")
     private Integer id;
     
     @Column (name ="nature_formation", length=50 )
@@ -32,6 +35,11 @@ public class Formation extends BasedTableEntity {
     
     @Column (name ="observation_formation" , length=60)
     private String observationFormation;
+    
+    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_formation")
+    private List<DemandeFormation> demandes = new ArrayList<DemandeFormation>();
+    
 
     public Integer getId() {
         return id;
@@ -88,8 +96,14 @@ public class Formation extends BasedTableEntity {
     public void setObservationFormation(String observationFormation) {
         this.observationFormation = observationFormation;
     }
-    
-    
+
+    public List<DemandeFormation> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<DemandeFormation> demandes) {
+        this.demandes = demandes;
+    }
     
     
 

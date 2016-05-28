@@ -287,7 +287,7 @@
                                                       </TableView>
                                                       <ToolBar prefHeight="40.0" prefWidth="200.0">
                                                          <items>
-                                                            <Button fx:id="btnAddConge" disable="true" mnemonicParsing="false" onAction="#doAddConge" text="Ajouter Conge" />
+                                                            <Button fx:id="btnAddConge" disable="true" mnemonicParsing="false" onAction="#doAddConge" text="demander un Conge" />
                                                          </items>
                                                       </ToolBar>
                                                    </children>
@@ -313,7 +313,7 @@
     <bottom>
         <ToolBar BorderPane.alignment="CENTER">
             <items>
-                <Button defaultButton="true" mnemonicParsing="false" onAction="#newPersonnel" prefHeight="35.0" prefWidth="120.0" text="%javafx.action.new">
+                <Button  fx:id="btnAddPersonnel" defaultButton="true" mnemonicParsing="false" onAction="#newPersonnel" prefHeight="35.0" prefWidth="120.0" text="ajouter Personnel">
                    
                     <tooltip>
                         <Tooltip text="%scene.employee.tooltips.new" />

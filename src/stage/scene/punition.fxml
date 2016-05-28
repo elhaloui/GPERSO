@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.input.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
@@ -30,22 +26,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="637.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gperso.controllers.FormationController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" 
+            prefHeight="637.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/8.0.65" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="gperso.controllers.PunitionController">
     <center>
         <AnchorPane prefHeight="390.0" prefWidth="788.0" BorderPane.alignment="CENTER">
             <children>
             <SplitPane dividerPositions="0.5" layoutX="40.0" layoutY="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <items>
-                      <TableView fx:id="tableFormation" prefHeight="320.0" prefWidth="295.0">
+                      <TableView fx:id="tablePunition" prefHeight="320.0" prefWidth="295.0">
                           <columns>
-                              <TableColumn fx:id="columnIdFormation" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Id Formation">
+                              <TableColumn fx:id="columnIdPunition" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Id Punition">
                             
                         </TableColumn>
-                              <TableColumn fx:id="columnNatureFormation" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Nature Formation">
+                              <TableColumn fx:id="columnCinPersonnel" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Cin Personnel">
                             
                         </TableColumn>
-                        <TableColumn fx:id="columnActionFormation" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Actions" />
-                        <TableColumn fx:id="columnActionParticper" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Participer" />
+                        <TableColumn fx:id="columnActionPunition" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" sortable="false" text="Actions" />
                           </columns>
                           <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -94,72 +92,74 @@
                                                             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                               </rowConstraints>
                                                               <padding>
                                                                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                                               </padding>
                                                               <children>
-                                                                  <Text layoutX="40.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut" GridPane.rowIndex="3">
+                                                                  <Text layoutX="40.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin Punition" GridPane.rowIndex="3">
                                                                       <GridPane.margin>
                                                                           <Insets left="10.0" />
                                                                       </GridPane.margin>
                                                                   </Text>
-                                                                  <Text layoutX="40.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin" GridPane.rowIndex="4">
+                                                                  <Text layoutX="40.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nature Punition" GridPane.rowIndex="4">
                                                                       <GridPane.margin>
                                                                           <Insets left="10.0" />
                                                                       </GridPane.margin>
                                                                   </Text>
-                                                                  <Text layoutX="40.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nature Fromation" GridPane.rowIndex="2">
+                                                                  <Text layoutX="40.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Debut Punition" GridPane.rowIndex="2">
                                                                       <GridPane.margin>
                                                                           <Insets left="10.0" />
                                                                       </GridPane.margin>
                                                                   </Text>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formations Details :" GridPane.columnSpan="2147483647">
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Punition Details :" GridPane.columnSpan="2147483647">
                                                                       <font>
                                                                           <Font name="System Bold" size="20.0" />
                                                                       </font>
                                                                   </Text>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Id Formation :" GridPane.rowIndex="1">
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Id Punition :" GridPane.rowIndex="1">
                                                                       <GridPane.margin>
                                                                           <Insets left="10.0" />
                                                                       </GridPane.margin>
                                                                   </Text>
                                                                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
                                                                       <children>
-                                                                          <TextField fx:id="txtIdFormation" editable="false" focusTraversable="false" layoutX="8.0" layoutY="4.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                          <TextField fx:id="txtIdPunition" disable="true" editable="false" focusTraversable="false" layoutX="8.0" layoutY="4.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                       </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="135.0" layoutY="105.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                                                                       <children>
-                                                                          <TextField fx:id="txtNatureFormation" editable="false" focusTraversable="false" layoutX="8.0" layoutY="4.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                          <TextField fx:id="txtDebutPunition" disable="true" editable="false" focusTraversable="false" layoutX="8.0" layoutY="4.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                       </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="295.0" layoutY="345.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
                                                                <children>
-                                                                  <DatePicker fx:id="txtDebutFormation" layoutX="-32.0" layoutY="-1.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <TextField fx:id="txtDureeAbsence" disable="true" layoutX="-32.0" layoutY="-1.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <TextField fx:id="txtFinPunition" layoutX="-36.0" layoutY="3.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                </children>
                                                                   </AnchorPane>
                                                                   <AnchorPane layoutX="155.0" layoutY="385.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
                                                                <children>
-                                                                  <DatePicker fx:id="txtFinFormation" layoutX="-45.0" layoutY="-1.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <TextField fx:id="txtNaturePunition" layoutX="-34.0" layoutY="4.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                </children>
                                                                   </AnchorPane>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu Formation" GridPane.rowIndex="5" />
-                                                            <Label prefHeight="21.0" prefWidth="136.0" text="Diplome Fromation" GridPane.rowIndex="6" />
-                                                            <Label text="Observation Formation" GridPane.rowIndex="7" />
-                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
+                                                            <Label prefHeight="21.0" prefWidth="136.0" text="Motif Punition" GridPane.rowIndex="5" />
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" GridPane.rowSpan="2">
                                                                <children>
-                                                                          <TextField fx:id="txtLieuFormation" editable="false" focusTraversable="false" layoutX="-77.0" layoutY="-1.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <TextArea fx:id="txtMotifPunition" disable="true" layoutX="-74.0" layoutY="-73.0" prefHeight="127.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                </children>
                                                             </AnchorPane>
-                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="6">
-                                                               <children>
-                                                                          <TextField fx:id="txtDiplomeFormation" editable="false" focusTraversable="false" layoutX="-53.0" layoutY="5.0" opacity="0.9" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                               </children>
-                                                            </AnchorPane>
+                                                            <Label text="Punisseur" GridPane.rowIndex="7" />
+                                                            <Label text="Personnel" GridPane.rowIndex="8" />
                                                             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="7">
                                                                <children>
-                                                                  <TextField fx:id="txtObservationFormation" layoutX="-53.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <TextField fx:id="txtPunisseur" layoutX="-24.0" layoutY="3.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="8">
+                                                               <children>
+                                                                  <TextField fx:id="txtCinPersonnel" layoutX="26.0" layoutY="14.0" prefHeight="39.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                </children>
                                                             </AnchorPane>
                                                               </children>
@@ -169,25 +169,6 @@
                                              </children></AnchorPane>
                                     </content>
                                   </TitledPane>
-                                    <TitledPane fx:id="PaneParticipation" animated="false" layoutX="10.0" layoutY="10.0" text="Demandes participation" visible="false">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <VBox layoutX="24.0" layoutY="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <TableView fx:id="tableDemande" prefHeight="200.0" prefWidth="200.0">
-                                                        <columns>
-                                                          <TableColumn fx:id="columnCinPersonnel" prefWidth="75.0" text="CIN" />
-                                                          <TableColumn fx:id="columnEtatDemande" prefWidth="75.0" text="Etat" />
-                                                            <TableColumn fx:id="columnActionDemande" prefWidth="75.0" text="Actions" />
-                                                        </columns>
-                                                      </TableView>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </TitledPane>
                                  
                                 </panes>
                               </Accordion>
@@ -206,13 +187,13 @@
     <bottom>
         <ToolBar BorderPane.alignment="CENTER">
             <items>
-                <Button defaultButton="true" mnemonicParsing="false" onAction="#newFormation" prefHeight="35.0" prefWidth="120.0" text="Ajouter formation">
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#newPunition" prefHeight="35.0" prefWidth="120.0" text="%javafx.action.new">
                    
                     <tooltip>
                         <Tooltip text="%scene.employee.tooltips.new" />
                     </tooltip>
                 </Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadData" prefHeight="35.0" prefWidth="120.0" text="Refresh">
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadData" prefHeight="35.0" prefWidth="120.0" text="%javafx.action.refresh">
                    
                 </Button>
             </items>
@@ -222,7 +203,7 @@
         <HBox alignment="CENTER_LEFT" spacing="5.0">
             <children>
                 
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formations :" underline="true">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Punitions" underline="true">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>

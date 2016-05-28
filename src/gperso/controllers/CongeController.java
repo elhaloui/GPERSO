@@ -1,5 +1,7 @@
 package gperso.controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gperso.helpers.FxInitializable;
 import gperso.helpers.TableViewColumnAction;
 import gperso.helpers.notifications.DialogBalloon;
@@ -11,7 +13,6 @@ import gperso.services.ServiceOfConge;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,6 +26,9 @@ import org.springframework.context.MessageSource;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.geometry.Pos;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Created by dimmaryanto on 10/5/15.
@@ -65,14 +69,14 @@ public class CongeController implements FxInitializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        columnIdConge.setCellValueFactory(new PropertyValueFactory<Conge, String>("id"));
-        columnDebutConge.setCellValueFactory(new PropertyValueFactory<Conge, Date>("debutConge"));
-        columnFinConge.setCellValueFactory(new PropertyValueFactory<Conge, Date>("finConge"));
-        columnDateDemande.setCellValueFactory(new PropertyValueFactory<Conge, Date>("dateDemande"));
-        columnNatureConge.setCellValueFactory(new PropertyValueFactory<Conge, String>("natureConge"));
-        columnContenuConge.setCellValueFactory(new PropertyValueFactory<Conge, String>("contenuConge"));
-        columnCommentaireChef.setCellValueFactory(new PropertyValueFactory<Conge, String>("commentaireChef"));
-        columnEtatConge.setCellValueFactory(new PropertyValueFactory<Conge, String>("etatConge"));
+        columnIdConge.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnDebutConge.setCellValueFactory(new PropertyValueFactory<>("debutConge"));
+        columnFinConge.setCellValueFactory(new PropertyValueFactory<>("finConge"));
+        columnDateDemande.setCellValueFactory(new PropertyValueFactory<>("dateDemande"));
+        columnNatureConge.setCellValueFactory(new PropertyValueFactory<>("natureConge"));
+        columnContenuConge.setCellValueFactory(new PropertyValueFactory<>("contenuConge"));
+        columnCommentaireChef.setCellValueFactory(new PropertyValueFactory<>("commentaireChef"));
+        columnEtatConge.setCellValueFactory(new PropertyValueFactory<>("etatConge"));
         
         
         
@@ -97,12 +101,7 @@ public class CongeController implements FxInitializable {
 
     }
 
-    @FXML
-    private void newConge() {
-        CongeDataController action = springContext.getBean(CongeDataController.class);
-        homeAction.updateContent();
-        action.newData();
-    }
+   
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -156,7 +155,7 @@ public class CongeController implements FxInitializable {
     }
 
     private class TableColumnCongeAction extends TableCell<Conge, String> {
-        TableView table;
+    private TableView table;
 
         public TableColumnCongeAction(TableView table) {
             this.table = table;
@@ -165,37 +164,51 @@ public class CongeController implements FxInitializable {
         @Override
         protected void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
-            if (empty) {
+            setAlignment(Pos.CENTER_LEFT);
+            if (empty)
                 setGraphic(null);
-            } else {
-                Conge conge = (Conge) table.getItems().get(getIndex());
-                setGraphic(actionColumnConge.getDefautlTableModel());
-                actionColumnConge.getUpdateLink().setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        CongeDataController action = springContext.getBean(CongeDataController.class);
-                        homeAction.updateContent();
-                        action.ExitsData(conge);
-                    }
-                });
-                actionColumnConge.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        if (windows.confirmDelete(
-                                lang.getSources(LangProperties.DATA_A_DEPARTMENT), conge.getId(), lang.getSources(LangProperties.ID), conge.getId()
-                        ).get() == ButtonType.OK) {
+            else {
+                FontAwesomeIconView icon = new FontAwesomeIconView();
+                icon.setFont(new Font("FontAwesome", 18));
+                Conge anConge = (Conge) table.getItems().get(getIndex());
+                 if (anConge.getEtatConge().equals("APPROUVER")) {
+                    setGraphic(actionColumnConge.getSingleHyperlinkTableModel("REFUSER"));
+                    icon.setIcon(FontAwesomeIcon.HAND_ALT_DOWN);
+                    actionColumnConge.getDeleteLink().setTextFill(Color.RED);
+                    actionColumnConge.getDeleteLink().setGraphic(icon);
+                    actionColumnConge.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
                             try {
-                                serviceConge.delete(conge);
+                                anConge.setEtatConge("REFUSER");
+                                serviceConge.update(anConge);
                                 loadData();
-                                ballon.sucessedRemoved(lang.getSources(LangProperties.DATA_A_DEPARTMENT), conge.getId());
                             } catch (Exception e) {
-                                windows.errorRemoved(lang.getSources(LangProperties.DATA_A_DEPARTMENT), lang.getSources(LangProperties.ID), conge.getId(), e);
+                                windows.errorLoading(lang.getSources(LangProperties.LIST_ACCOUNTS), e);
                                 e.printStackTrace();
                             }
                         }
-                    }
-                });
+                    });
+                } 
+                  else  {
+                    setGraphic(actionColumnConge.getSingleHyperlinkTableModel("APPROUVER"));
+                    icon.setIcon(FontAwesomeIcon.HAND_ALT_UP);
+                    actionColumnConge.getDeleteLink().setTextFill(Color.BLUE);
+                    actionColumnConge.getDeleteLink().setGraphic(icon);
+                    actionColumnConge.getDeleteLink().setOnAction((ActionEvent event) -> {
+                        try {
+                            anConge.setEtatConge("APPROUVER");
+                            serviceConge.update(anConge);
+                            loadData();
+                        } catch (Exception e) {
+                            windows.errorLoading(lang.getSources(LangProperties.LIST_ACCOUNTS), e);
+                            e.printStackTrace();
+                        }
+                    });
+                }
             }
         }
     }
+    //**********************************************************************
+   
 }

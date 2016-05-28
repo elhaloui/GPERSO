@@ -1,12 +1,17 @@
 package gperso.controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import gperso.helpers.FxInitializable;
 import gperso.helpers.TableViewColumnAction;
 import gperso.helpers.notifications.DialogBalloon;
 import gperso.helpers.notifications.DialogWindows;
 import gperso.helpers.notifications.LangProperties;
 import gperso.helpers.notifications.LangSource;
+import gperso.models.DemandeFormation;
 import gperso.models.Formation;
+import gperso.models.Personnel;
+import gperso.services.ServiceOfDemandeFormation;
 import gperso.services.ServiceOfFormation;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -24,6 +29,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Created by dimmaryanto on 10/1/15.
@@ -35,40 +46,20 @@ public class FormationController implements FxInitializable {
 
     @FXML
     private TableView<Formation> tableFormation;
-//    @FXML
-//    private TableView<Adresse> tableAdresse;
-//    @FXML
-//    private TableView<Membre> tableMembre;
+    @FXML
+    private TableView<DemandeFormation> tableDemande;
     @FXML
     private TableColumn<Formation, String> columnIdFormation;
     @FXML
     private TableColumn<Formation, String> columnNatureFormation;
+     @FXML
+    private TableColumn<DemandeFormation, Personnel> columnCinPersonnel;
+    @FXML
+    private TableColumn<DemandeFormation, String> columnEtatDemande;
     @FXML
     private TableColumn columnActionFormation;
-    
-//    @FXML 
-//    private TableColumn<Adresse , String > columnLieu;
-//    @FXML 
-//    private TableColumn<Adresse , String > columnVille ;
-//    @FXML 
-//    private TableColumn<Membre , String > columnNomMembre;
-//    @FXML 
-//    private TableColumn<Membre , String > columnPrenomMembre;
-//    @FXML 
-//    private TableColumn<Membre , String > columndegreMembre;
-//    @FXML 
-//    private TableColumn<Membre , Date > columnNaissanceMembre;
-//    @FXML 
-//    private TableColumn<Membre , String > columnfonctionMembre;
-    
-    
-    
-    
-//    @FXML
-//    private TableColumn columnActionAdresse;
-//    @FXML
-//    private TableColumn columnActionMembre;
-    
+    @FXML
+    private TableColumn columnActionDemande;
     @FXML
     private TextField txtIdFormation;
     @FXML
@@ -84,10 +75,9 @@ public class FormationController implements FxInitializable {
     @FXML
     private TextField txtObservationFormation;
     
-//    @FXML 
-//    private Button btnAddAdresse;
-//     @FXML 
-//    private Button btnAddMembre;
+    @FXML 
+    public TitledPane PaneParticipation;
+    
     
     
     
@@ -99,15 +89,17 @@ public class FormationController implements FxInitializable {
     private LangSource lang;
     
     private ServiceOfFormation serviceFormation;
-//    private ServiceOfAdresse serviceAdresses;
-//    private ServiceOfMembre serviceMembres;
+    private ServiceOfDemandeFormation serviceDemande;
+   
+
     
     private ApplicationContext springContext;
     private Formation selectedFormation;
     
     private TableViewColumnAction actionColumnFormation;
-//    private TableViewColumnAction actionColumnAdresse;
-//    private TableViewColumnAction actionColumnMembre;
+    private TableViewColumnAction actionColumnDemande;
+    private TableViewColumnAction actionColulmnParticiper;
+
 
     public Formation getSelectedFormation() {
         return selectedFormation;
@@ -120,17 +112,11 @@ public class FormationController implements FxInitializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        columnIdFormation.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnNatureFormation.setCellValueFactory(new PropertyValueFactory<>("natureFormation"));
-        
-//        columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
-//        columnVille.setCellValueFactory(new PropertyValueFactory<>("ville"));
-//        
-//        columnNomMembre.setCellValueFactory(new PropertyValueFactory<>("nom"));
-//        columnPrenomMembre.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-//        columndegreMembre.setCellValueFactory(new PropertyValueFactory<>("degre"));
-//        columnfonctionMembre.setCellValueFactory(new PropertyValueFactory<>("fonction"));
-//        columnNaissanceMembre.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
+        columnIdFormation.setCellValueFactory(new PropertyValueFactory<Formation,String>("id"));
+        columnNatureFormation.setCellValueFactory(new PropertyValueFactory<Formation,String>("natureFormation"));
+        columnCinPersonnel.setCellValueFactory(new PropertyValueFactory<DemandeFormation,Personnel>("personnel"));
+        columnEtatDemande.setCellValueFactory(new PropertyValueFactory<DemandeFormation,String>("etatDemande"));
+
         
         columnActionFormation.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
@@ -139,26 +125,24 @@ public class FormationController implements FxInitializable {
             }
         });
         
-//        columnActionAdresse.setCellFactory(new Callback<TableColumn, TableCell>() {
-//            @Override
-//            public TableCell call(TableColumn param) {
-//                return new TableColumnAdresseAction(tableAdresse);
-//            }
-//        });
-//        
-//        columnActionMembre.setCellFactory(new Callback<TableColumn, TableCell>() {
-//            @Override
-//            public TableCell call(TableColumn param) {
-//                return new TableColumnMembreAction(tableMembre);
-//            }
-//        });
+        columnActionDemande.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                return new TableColumnDemandeAction(tableDemande);
+            }
+        });
         
+       
+
         tableFormation.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Formation> observable, Formation oldValue, Formation newValue) -> {
             if (newValue != null) {
                 selectedFormation=newValue;
                 showFields();
             } else clearField();
         });
+        
+        
+        
     }
 
     @Override
@@ -194,28 +178,24 @@ public class FormationController implements FxInitializable {
             e.printStackTrace();
         }
     }
+    
+    public void loadDemandeData() {
+        try {
+            tableDemande.getItems().clear();
+            System.out.println(selectedFormation.getDemandes().size());
+            windows.loading(tableDemande.getItems(), selectedFormation.getDemandes(), "Chargement des demandes");
+            tableDemande.requestFocus();
+        } catch (Exception e) {
+            windows.errorLoading(lang.getSources(LangProperties.LIST_OF_EMPLOYEES), e);
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void tableViewClearSelected() {
         tableFormation.getSelectionModel().clearSelection();
     }
     
-//    @FXML
-//    private void doAddAdresse() {
-//        NewAdresseAction action = springContext.getBean(NewAdresseAction.class);
-//        action.setIsUpdate(false);
-////        action.init(this);
-//        action.newData();
-//    }
-//    
-//    @FXML
-//    private void doAddMembre() {
-//        NewMembreAction action = springContext.getBean(NewMembreAction.class);
-//        action.setIsUpdate(false);
-//  //      action.init(this);
-//        action.newData();
-//    }
-
     @Autowired
     public void setLang(LangSource lang) {
         this.lang = lang;
@@ -224,15 +204,13 @@ public class FormationController implements FxInitializable {
     @Autowired
     public void setActionColumnFormation(TableViewColumnAction actionColumnFormation) {
         this.actionColumnFormation = actionColumnFormation;
+        
     }
-//    @Autowired
-//    public void setActionColumnAdresse(TableViewColumnAction actionColumnAdresse) {
-//        this.actionColumnAdresse = actionColumnAdresse;
-//    }
-//    @Autowired
-//    public void setActionColumnMembre(TableViewColumnAction actionColumnMembre) {
-//        this.actionColumnMembre = actionColumnMembre;
-//    }
+@Autowired
+    public void setActionColumnDemande(TableViewColumnAction actionColumnDemande) {
+        this.actionColumnDemande = actionColumnDemande;
+        
+    }
 
     @Autowired
     public void setWindows(DialogWindows windows) {
@@ -253,14 +231,10 @@ public class FormationController implements FxInitializable {
     public void setService(ServiceOfFormation serviceFormation) {
         this.serviceFormation = serviceFormation;
     }
-//    @Autowired
-//    public void setServiceAdresses(ServiceOfAdresse serviceAdresses) {
-//        this.serviceAdresses = serviceAdresses;
-//    }
-//    @Autowired
-//    public void setServiceMembres(ServiceOfMembre serviceMembres) {
-//        this.serviceMembres = serviceMembres;
-//    }
+    @Autowired
+    public void setServiceDemandes(ServiceOfDemandeFormation serviceDemande) {
+        this.serviceDemande = serviceDemande;
+    }
 
     public void showFields() {
          txtIdFormation.setText(selectedFormation.getId().toString());
@@ -271,12 +245,15 @@ public class FormationController implements FxInitializable {
          txtDiplomeFormation.setText(selectedFormation.getDiplomeFormation());
          txtObservationFormation.setText(selectedFormation.getObservationFormation());
          
-//         tableAdresse.getItems().clear();
-//         tableAdresse.setItems( FXCollections.observableArrayList(selectedFormation.getAdresses()));
-//         tableMembre.getItems().clear();
-//         tableMembre.setItems( FXCollections.observableArrayList(selectedFormation.getMembres()));
-//         btnAddAdresse.setDisable(false);
-//         btnAddMembre.setDisable(false);
+        tableDemande.getItems().clear();
+         System.out.println(tableDemande);
+        try {
+            tableDemande.setItems( FXCollections.observableArrayList(selectedFormation.getDemandes()));
+        } catch (Exception ex) {
+            Logger.getLogger(FormationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         loadDemandeData();
+
     }
 
     private void clearField() {
@@ -287,10 +264,7 @@ public class FormationController implements FxInitializable {
          txtLieuFormation.clear();
          txtDiplomeFormation.clear();
          txtObservationFormation.clear();
-//         tableAdresse.getItems().clear();
-//         tableMembre.getItems().clear();
-//         btnAddAdresse.setDisable(true);
-//         btnAddMembre.setDisable(true);
+         tableDemande.getItems().clear();
          selectedFormation=null;
     }
 
@@ -310,6 +284,8 @@ public class FormationController implements FxInitializable {
                 setGraphic(null);
             else {
                 Formation anFormation = table.getItems().get(getIndex());
+                if(homeAction.getAccount().getLevel().equals(gperso.models.Level.ADMIM.getValue()))
+                {
                 setGraphic(actionColumnFormation.getDefautlTableModel());
                 actionColumnFormation.getUpdateLink().setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -339,109 +315,97 @@ public class FormationController implements FxInitializable {
                     }
                 });
             }
+                else
+                {
+                    DemandeFormation demande=null;
+                    try {
+                        demande = serviceDemande.findOne(homeAction.getAccount(), anFormation);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FormationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if(demande==null)
+                    {
+                        setGraphic(actionColumnFormation.getSingleHyperlinkTableModel("Participer"));
+                        actionColumnFormation.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                      DemandeFormation  demande1 =new DemandeFormation(anFormation , new Personnel(homeAction.getAccount().getUsername()),"EN ATTEND");
+                        try {
+                            serviceDemande.save(demande1);
+                        } catch (Exception ex) {
+                            Logger.getLogger(FormationController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       loadData();
+                        
+                    }
+                });
+                        
+                    }
+                    else
+                    {
+                     setGraphic(actionColumnFormation.getSingleHyperlinkTableModel(demande.getEtatDemande()));   
+                    }
+                    
+                }
+            }
 
         }
     }
     
     //************************************************************************
-    
-//    private class TableColumnAdresseAction extends TableCell<Adresse, String> {
-//
-//        private TableView<Adresse> table;
-//        
-//    
-//        public TableColumnAdresseAction(TableView tableView) {
-//            this.table = tableView;
-//        }
-//
-//        @Override
-//        protected void updateItem(String item, boolean empty) {
-//            super.updateItem(item, empty);
-//            if (empty)
-//                setGraphic(null);
-//            else {
-//                Adresse anAdresse = table.getItems().get(getIndex());
-//                setGraphic(actionColumnAdresse.getDefautlTableModel());
-//                actionColumnAdresse.getUpdateLink().setOnAction(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//                        NewAdresseAction action = springContext.getBean(NewAdresseAction.class);
-//                        action.exitsData(anAdresse);
-//                    }
-//                });
-//                
-//                actionColumn.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//
-//                        if (windows.confirmDelete(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), anAdresse.getLieu()+" "+anAdresse.getVille(),
-//                                lang.getSources(LangProperties.ID), anAdresse.getLieu()+" "+anAdresse.getVille())
-//                                .get() == ButtonType.OK) {
-//                            try {
-//                                serviceAdresses.delete(anAdresse);
-//                                loadData();
-//                                ballon.sucessedRemoved(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), anAdresse.getLieu()+" "+anAdresse.getVille());
-//                            } catch (Exception e) {
-//                                windows.errorRemoved(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), lang.getSources(LangProperties.ID), anAdresse.getLieu()+" "+anAdresse.getVille(), e);
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }
-//                });
-//            }
-//
-//        }
-//    }
-//   
-//
-//
-//// *****************************************************************************
-//
-//private class TableColumnMembreAction extends TableCell<Membre, String> {
-//
-//        private TableView<Membre> table;
-//        
-//    
-//        public TableColumnMembreAction(TableView tableView) {
-//            this.table = tableView;
-//        }
-//
-//        @Override
-//        protected void updateItem(String item, boolean empty) {
-//            super.updateItem(item, empty);
-//            if (empty)
-//                setGraphic(null);
-//            else {
-//                Membre anMembre = table.getItems().get(getIndex());
-//                setGraphic(actionColumnMembre.getDefautlTableModel());
-//                actionColumnMembre.getUpdateLink().setOnAction(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//                        NewMembreAction action = springContext.getBean(NewMembreAction.class);
-//                        action.exitsData(anMembre);
-//                    }
-//                });
-//                
-//                actionColumn.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//
-//                        if (windows.confirmDelete(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), anMembre.getNom()+" "+anMembre.getPrenom(),
-//                                lang.getSources(LangProperties.ID), anMembre.getNom()+" "+anMembre.getPrenom())
-//                                .get() == ButtonType.OK) {
-//                            try {
-//                                serviceMembres.delete(anMembre);
-//                                loadData();
-//                                ballon.sucessedRemoved(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), anMembre.getNom()+" "+anMembre.getPrenom());
-//                            } catch (Exception e) {
-//                                windows.errorRemoved(lang.getSources(LangProperties.DATA_AN_EMPLOYEE), lang.getSources(LangProperties.ID), anMembre.getNom()+" "+anMembre.getPrenom(), e);
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }
-//                });
-//            }
-//
-//        }
-//    }
+      private class TableColumnDemandeAction extends TableCell<DemandeFormation, String> {
+    private TableView table;
+
+        public TableColumnDemandeAction(TableView table) {
+            this.table = table;
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            setAlignment(Pos.CENTER_LEFT);
+            if (empty)
+                setGraphic(null);
+            else {
+                FontAwesomeIconView icon = new FontAwesomeIconView();
+                icon.setFont(new Font("FontAwesome", 18));
+                DemandeFormation anDemande = (DemandeFormation) table.getItems().get(getIndex());
+                 if (anDemande.getEtatDemande().equals("APPROUVER")) {
+                    setGraphic(actionColumnDemande.getSingleHyperlinkTableModel("REFUSER"));
+                    icon.setIcon(FontAwesomeIcon.HAND_ALT_DOWN);
+                    actionColumnDemande.getDeleteLink().setTextFill(Color.RED);
+                    actionColumnDemande.getDeleteLink().setGraphic(icon);
+                    actionColumnDemande.getDeleteLink().setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                anDemande.setEtatDemande("REFUSER");
+                                serviceDemande.update(anDemande);
+                                loadDemandeData();
+                            } catch (Exception e) {
+                                windows.errorLoading(lang.getSources(LangProperties.LIST_ACCOUNTS), e);
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } 
+                  else  {
+                    setGraphic(actionColumnDemande.getSingleHyperlinkTableModel("APPROUVER"));
+                    icon.setIcon(FontAwesomeIcon.HAND_ALT_UP);
+                    actionColumnDemande.getDeleteLink().setTextFill(Color.BLUE);
+                    actionColumnDemande.getDeleteLink().setGraphic(icon);
+                    actionColumnDemande.getDeleteLink().setOnAction((ActionEvent event) -> {
+                        try {
+                            anDemande.setEtatDemande("APPROUVER");
+                            serviceDemande.update(anDemande);
+                            loadDemandeData();
+                        } catch (Exception e) {
+                            windows.errorLoading(lang.getSources(LangProperties.LIST_ACCOUNTS), e);
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }
+        }
+    }
 }

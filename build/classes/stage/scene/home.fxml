@@ -123,6 +123,17 @@
                                                                 <FontAwesomeIconView glyphName="ARCHIVE" size="24" />
                                                             </graphic>
                                                         </Button>
+                                                        <Button fx:id="btnAbsence" contentDisplay="TOP" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showAbsences" prefHeight="30.0" prefWidth="200.0" text="Absences">
+                                                            <graphic>
+                                                                <FontAwesomeIconView glyphName="EXCLAMATION" size="24" />
+                                                            </graphic>
+                                                        </Button>
+                                                        
+                                                        <Button fx:id="btnPunition" contentDisplay="TOP" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showPunitions"   prefHeight="30.0" prefWidth="200.0" text="Punitions">
+                                                            <graphic>
+                                                                <FontAwesomeIconView glyphName="LOW-VISION" size="24" />
+                                                            </graphic>
+                                                        </Button>
                                                         
                                                         
                                                     </children>

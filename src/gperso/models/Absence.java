@@ -12,7 +12,6 @@ import javax.persistence.*;
 public class Absence extends BasedTableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-     @Column (name ="id_absence")
     private Integer id;
     
     @Column (name ="date_absence")

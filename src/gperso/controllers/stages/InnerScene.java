@@ -1,5 +1,7 @@
 package gperso.controllers.stages;
 
+import gperso.controllers.AbsenceController;
+import gperso.controllers.AbsenceDataController;
 import gperso.controllers.CongeController;
 import gperso.controllers.CongeDataController;
 import gperso.controllers.FormationController;
@@ -12,6 +14,8 @@ import gperso.controllers.ServiceController;
 import gperso.controllers.ServiceDataController;
 import gperso.controllers.AccountController;
 import gperso.controllers.AccountDataController;
+import gperso.controllers.PunitionController;
+import gperso.controllers.PunitionDataController;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -160,6 +164,35 @@ public class InnerScene {
         return (AccountDataController) getInit();
     }
 
+    @Bean
+    @Scope("prototype")
+    public AbsenceController absenceController(@Qualifier("AbsenceController")  @Value("/stage/scene/absence.fxml") String fxml) throws IOException {
+        setContentInitialize(fxml);
+        return (AbsenceController) getInit();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public AbsenceDataController absenceDataController(@Qualifier("AbsenceDataController")  @Value("/stage/scene/absence_data.fxml") String fxml)
+            throws IOException {
+        setContentInitialize(fxml);
+        return (AbsenceDataController) getInit();
+    }
+    
+     @Bean
+    @Scope("prototype")
+    public PunitionController punitionController(@Qualifier("PunitionController")  @Value("/stage/scene/punition.fxml") String fxml) throws IOException {
+        setContentInitialize(fxml);
+        return (PunitionController) getInit();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public PunitionDataController punitionDataController(@Qualifier("PunitionDataController")  @Value("/stage/scene/punition_data.fxml") String fxml)
+            throws IOException {
+        setContentInitialize(fxml);
+        return (PunitionDataController) getInit();
+    }
     
     
    
